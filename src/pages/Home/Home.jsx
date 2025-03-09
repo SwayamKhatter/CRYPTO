@@ -427,10 +427,10 @@ const Home = () => {
             </div>
           )}
   
-          <div onClick={handleBotRelease} className="relative w-[10rem] cursor-pointer">
-            <Button className="w-full h-[3rem] flex items-center gap-2">
+          <div onClick={handleBotRelease} className="relative w-[4rem] cursor-pointer">
+            <Button className="h-[3rem] flex items-center gap-2">
               <MessageCircle className="fill-white -rotate-90 stroke-none" size={30} />
-              <span className="text-xl">Chat Bot</span>
+              {/* <span className="text-xl">Chat Bot</span> */}
             </Button>
           </div>
         </section>

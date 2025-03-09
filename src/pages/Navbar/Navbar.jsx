@@ -124,10 +124,10 @@ const Navbar = () => {
           </p>
         </div>
 
-        <div className="hidden md:flex w-full justify-end mx-4">
+        <div className="flex w-4 md:w-full justify-end mx-4">
           <Button variant="outline" onClick={() => navigate("/search")} className="flex items-center gap-3 w-[250px] md:w-[300px] shadow-md rounded-full bg-gray-700 border-gray-600">
             <MagnifyingGlassIcon className="h-5 w-5" />
-            <span className="">Search</span>
+            <span className="hidden md:block">Search</span>
           </Button>
         </div>
 
