@@ -1,26 +1,43 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins","san-serif";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-/* https://cdn.pixabay.com/photo/2022/12/26/11/37/bitcoin-7678812_1280.jpg */
-.authContainer{
-  background-image: url("/public/29025161.png");
+
+/* Auth Page Background */
+.authContainer {
+  background-image: url("https://img.pikbest.com/photo/20240716/golden-bitcoin-coin-on-stock-market-chart-background-cryptocurrency-concept_10671809.jpg!w700wp");
   height: 100vh;
   width: 100%;
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center;
-  
-}
-.bgBlure{
-  backdrop-filter: blur(10px);
+  background-blend-mode: darken;
 }
 
+/* Auth Box */
+.authBox {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 12px;
+  width: 400px;
+  padding: 2rem;
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1);
+}
 
+/* Buttons */
+button {
+  border-radius: 8px !important;
+  font-weight: 500;
+}
 
+/* Link Buttons */
+button[variant="link"] {
+  color: #4a90e2;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+}
 
-  
- 
-     
+button[variant="link"]:hover {
+  text-decoration: underline;
+}

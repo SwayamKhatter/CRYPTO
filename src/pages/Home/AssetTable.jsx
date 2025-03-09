@@ -315,16 +315,16 @@ export function AssetTable({ coins, category }) {
   const navigate = useNavigate();
 
   return (
-    <Table className="px-5  border-t relative">
+    <Table className="px-5 border-t relative">
       <ScrollArea className={category == "all" ? "h-[74vh]" : "h-[82vh]"}>
         <TableHeader>
-          <TableRow className="sticky top-0 left-0 right-0 bg-background">
+          <TableRow className="sticky top-0 left-0 right-0 bg-background z-10">
             <TableHead className="py-4">Coin</TableHead>
             <TableHead>SYMBOL</TableHead>
             <TableHead>VOLUME</TableHead>
             <TableHead>MARKET CAP</TableHead>
             <TableHead>24H</TableHead>
-            <TableHead className="text-right">PRICE</TableHead>
+            <TableHead>PRICE</TableHead>
           </TableRow>
         </TableHeader>
 
@@ -336,7 +336,7 @@ export function AssetTable({ coins, category }) {
               key={item.id}
             >
               <TableCell className="font-medium flex items-center gap-2">
-                <Avatar className="-z-50">
+                <Avatar className="z-5">
                   <AvatarImage src={item.image} alt={item.symbol} />
                 </Avatar>
                 <span> {item.name}</span>
@@ -353,7 +353,7 @@ export function AssetTable({ coins, category }) {
               >
                 {item.market_cap_change_percentage_24h}%
               </TableCell>
-              <TableCell className="text-right">{item.current_price}</TableCell>
+              <TableCell>${item.current_price}</TableCell>
 
               {/* market_cap_change_percentage_24h */}
             </TableRow>

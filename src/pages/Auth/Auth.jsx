@@ -46,101 +46,59 @@ console.log("---------- ",auth.error)
 
 
   return (
-    <div className={`authContainer h-screen relative`}>
-      <div className="absolute top-0 right-0 left-0 bottom-0 bg-opacity-2"></div>
+    <div className="authContainer h-screen flex items-center justify-center relative">
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
-      <div
-        className={`bgBlure absolute top-1/2 left-1/2 transform -translate-x-1/2  -translate-y-1/2 box flex flex-col justify-center items-center  h-[35rem] w-[30rem]  rounded-md z-50 bg-opacity-50 shadow-2xl text-white shadow-red-500/50`}
-      >
-         <CustomeToast show={auth.error} message={auth.error?.error}/>
-     
+      {/* Auth Box */}
+      <div className="authBox relative z-50 flex flex-col items-center justify-center p-10 m-4 shadow-lg rounded-xl text-white">
+        <CustomeToast show={auth.error} message={auth.error?.error} />
 
-        <h1 className="text-6xl font-bold pb-9">CryptoQuay</h1>
-        <Avatar>
-          <AvatarImage src="https://cdn.pixabay.com/photo/2019/04/15/20/42/bitcoin-4130299_1280.png"/>
+        <h1 className="text-4xl font-bold mb-5 text-blue-400">CryptoQuay</h1>
+        <Avatar className="mb-4">
+          <AvatarImage src="https://cdn.pixabay.com/photo/2019/04/15/20/42/bitcoin-4130299_1280.png" />
           <AvatarFallback>BTC</AvatarFallback>
         </Avatar>
 
-        {location.pathname == "/signup" ? (
-          <section
-            className={`w-full login  ${animate ? "slide-down" : "slide-up"}`}
-          >
-            <div className={`  loginBox  w-full px-10 space-y-5 `}>
+        {location.pathname === "/signup" ? (
+          <section className={`w-full transition-all ${animate ? "slide-down" : "slide-up"}`}>
+            <div className="space-y-5 w-full">
               <SignupForm />
-
-              {location.pathname == "/signup" ? (
-                <div className="flex items-center justify-center">
-                  <span> {"don't have account ?"} </span>
-                  <Button
-                    onClick={() => handleNavigation("/signin")}
-                    variant="ghost"
-                  >
-                    signin
-                  </Button>
-                </div>
-              ) : (
-                <div className="flex items-center justify-center">
-                  <span>already have account ? </span>
-                  <Button
-                    onClick={() => handleNavigation("/signup")}
-                    variant="ghost"
-                  >
-                    signup
-                  </Button>
-                </div>
-              )}
+              <div className="flex justify-center items-center">
+                <span>Already have an account?</span>
+                <Button onClick={() => handleNavigation("/signin")} variant="link">
+                  Sign In
+                </Button>
+              </div>
             </div>
           </section>
-        ) : location.pathname == "/forgot-password" ? (
+        ) : location.pathname === "/forgot-password" ? (
           <section className="p-5 w-full">
             <ForgotPasswordForm />
-            {/* <Button variant="outline" className="w-full py-5 mt-5">
-              Try Using Mobile Number
-            </Button> */}
-            <div className="flex items-center justify-center mt-5">
-              <span>Back To Login ? </span>
-              <Button onClick={() => navigate("/signin")} variant="ghost">
-                signin
+            <div className="flex justify-center mt-5 items-center">
+              <span>Back to login?</span>
+              <Button onClick={() => navigate("/signin")} variant="link">
+                Sign In
               </Button>
             </div>
           </section>
         ) : (
-          <>
-            {
-              <section className={`w-full login`}>
-                <div className={`  loginBox  w-full px-10 space-y-5 `}>
-                  <LoginForm />
-
-                  <div className="flex items-center justify-center">
-                    <span>New User ? </span>
-                    <Button
-                      onClick={() => handleNavigation("/signup")}
-                      variant="ghost"
-                      className="mx-5 bg-blue-500"
-                    >
-                      signup
-                    </Button>
-                  </div>
-                  <div className="">
-                    <Button
-                      onClick={() => navigate("/forgot-password")}
-                      variant="outline"
-                      className="w-full py-5 bg-red-500"
-                    >
-                      Forgot Password ?
-                    </Button>
-                  </div>
-                </div>
-              </section>
-            }
-          </>
+          <section className="w-full">
+            <div className="space-y-5 w-full">
+              <LoginForm />
+              <div className="flex justify-center items-center">
+                <span>New User?</span>
+                <Button onClick={() => handleNavigation("/signup")} variant="link">
+                  Sign Up
+                </Button>
+              </div>
+              <Button onClick={() => navigate("/forgot-password")} variant="outline" className="w-full bg-red-500 text-black hover:bg-red-600">
+                Forgot Password?
+              </Button>
+            </div>
+          </section>
         )}
-
-
       </div>
-      
-    
-
     </div>
   );
 };

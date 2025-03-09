@@ -30,7 +30,7 @@ import PredictPriceModal from "./PredictPriceModal";
 
 
 const StockDetails = () => {
-  
+
   const [predictModalOpen, setPredictModalOpen] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -95,30 +95,128 @@ const StockDetails = () => {
   }
 
   return (
+    // <>
+    //   {coin.loading ? (
+    //     <SpinnerBackdrop />
+    //   ) : (
+    //     <div className="px-6 py-10 bg-gradient-to-t from-yellow-300 to-orange-400 min-h-screen">
+    //       {/* Top Section: Coin Info + Actions */}
+    //       <div className="flex justify-between items-center flex-wrap gap-4">
+    //         {/* Coin Info */}
+    //         <div className="flex items-center gap-6">
+    //           <Avatar className="w-16 h-16">
+    //             <AvatarImage src={coin.coinDetails?.image?.large} />
+    //           </Avatar>
+    //           <div className="space-y-1">
+    //             <div className="flex items-center gap-2 text-lg font-semibold">
+    //               <p>{coin.coinDetails?.symbol?.toUpperCase()}</p>
+    //               <DotIcon className="text-gray-500" />
+    //               <p className="text-gray-600">{coin.coinDetails?.name}</p>
+    //             </div>
+    //             <div className="flex items-end gap-3 text-xl font-bold">
+    //               <p>${coin.coinDetails?.market_data.current_price.usd}</p>
+    //               <p
+    //                 className={`text-sm font-medium ${coin.coinDetails?.market_data.market_cap_change_24h < 0
+    //                     ? "text-red-600"
+    //                     : "text-green-600"
+    //                   }`}
+    //               >
+    //                 <span>
+    //                   {coin.coinDetails?.market_data.market_cap_change_24h.toFixed(2)}
+    //                 </span>
+    //                 <span className="ml-1">
+    //                   ({coin.coinDetails?.market_data.market_cap_change_percentage_24h.toFixed(2)}%)
+    //                 </span>
+    //               </p>
+    //             </div>
+    //           </div>
+    //         </div>
+
+    //         {/* Action Buttons */}
+    //         <div className="flex items-center gap-4">
+    //           {/* Predict Price */}
+    //           <Button
+    //             className="h-10 w-44"
+    //             variant="outline"
+    //             onClick={() => setPredictModalOpen(true)}
+    //           >
+    //             Predict Price
+    //           </Button>
+
+    //           {/* Watchlist Button */}
+    //           <Button
+    //             onClick={handleAddToWatchlist}
+    //             className="h-10 w-10 flex items-center justify-center p-0"
+    //             variant="outline"
+    //           >
+    //             {existInWatchlist(watchlist.items, coin.coinDetails) ? (
+    //               <BookmarkFilledIcon className="h-6 w-6" />
+    //             ) : (
+    //               <BookmarkIcon className="h-6 w-6" />
+    //             )}
+    //           </Button>
+
+
+    //           {/* Trade Button */}
+    //           <Dialog>
+    //             <DialogTrigger asChild>
+    //               <Button size="lg" className="h-10">TRADE</Button>
+    //             </DialogTrigger>
+    //             <DialogContent>
+    //               <DialogHeader>
+    //                 <DialogTitle className="px-10 pt-5 text-center">
+    //                   How much do you want to spend?
+    //                 </DialogTitle>
+    //               </DialogHeader>
+    //               <TreadingForm />
+    //             </DialogContent>
+    //           </Dialog>
+    //         </div>
+    //       </div>
+
+    //       {/* Divider Line */}
+    //       <div className="w-full h-px bg-gray-300 my-6" />
+
+    //       {/* Stock Chart Section */}
+    //       <div className="mt-6">
+    //         <StockChart coinId={coin.coinDetails?.id} />
+    //       </div>
+    //     </div>
+    //   )}
+
+    //   {/* Predict Price Modal */}
+    //   <PredictPriceModal
+    //     coinName={coin.coinDetails?.id}
+    //     open={predictModalOpen}
+    //     onClose={() => setPredictModalOpen(false)}
+    //   />
+    // </>
+
+
     <>
       {coin.loading ? (
         <SpinnerBackdrop />
       ) : (
-        <div className="px-6 py-10 bg-gradient-to-t from-yellow-300 to-orange-400 min-h-screen">
+        <div className="px-4 py-8 bg-gradient-to-b from-gray-900 to-gray-800 min-h-screen text-white">
           {/* Top Section: Coin Info + Actions */}
-          <div className="flex justify-between items-center flex-wrap gap-4">
+          <div className="flex flex-wrap justify-between items-center gap-6">
             {/* Coin Info */}
-            <div className="flex items-center gap-6">
-              <Avatar className="w-16 h-16">
+            <div className="flex items-center gap-4">
+              <Avatar className="w-14 h-14">
                 <AvatarImage src={coin.coinDetails?.image?.large} />
               </Avatar>
               <div className="space-y-1">
                 <div className="flex items-center gap-2 text-lg font-semibold">
-                  <p>{coin.coinDetails?.symbol?.toUpperCase()}</p>
+                  <p className="uppercase">{coin.coinDetails?.symbol}</p>
                   <DotIcon className="text-gray-500" />
-                  <p className="text-gray-600">{coin.coinDetails?.name}</p>
+                  <p className="text-gray-400">{coin.coinDetails?.name}</p>
                 </div>
-                <div className="flex items-end gap-3 text-xl font-bold">
+                <div className="flex items-end gap-3 text-2xl font-bold">
                   <p>${coin.coinDetails?.market_data.current_price.usd}</p>
                   <p
                     className={`text-sm font-medium ${coin.coinDetails?.market_data.market_cap_change_24h < 0
-                        ? "text-red-600"
-                        : "text-green-600"
+                      ? "text-red-500"
+                      : "text-green-500"
                       }`}
                   >
                     <span>
@@ -134,9 +232,9 @@ const StockDetails = () => {
 
             {/* Action Buttons */}
             <div className="flex items-center gap-4">
-              {/* Predict Price */}
+              {/* Predict Price Button */}
               <Button
-                className="h-10 w-44"
+                className="h-10 px-6 border border-gray-500 hover:bg-gray-700 transition-all text-black"
                 variant="outline"
                 onClick={() => setPredictModalOpen(true)}
               >
@@ -146,25 +244,29 @@ const StockDetails = () => {
               {/* Watchlist Button */}
               <Button
                 onClick={handleAddToWatchlist}
-                className="h-10 w-10 flex items-center justify-center p-0"
+                className="h-10 w-10 flex items-center justify-center p-0 border border-gray-500 hover:bg-gray-700 transition-all"
                 variant="outline"
               >
                 {existInWatchlist(watchlist.items, coin.coinDetails) ? (
-                  <BookmarkFilledIcon className="h-6 w-6" />
+                  <BookmarkFilledIcon className="h-6 w-6 text-black" />
                 ) : (
-                  <BookmarkIcon className="h-6 w-6" />
+                  <BookmarkIcon className="h-6 w-6 text-black" />
                 )}
               </Button>
-
 
               {/* Trade Button */}
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="h-10">TRADE</Button>
+                  <Button
+                    size="lg"
+                    className="h-10 px-8 bg-yellow-500 hover:bg-yellow-600 text-black font-semibold transition-all"
+                  >
+                    TRADE
+                  </Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="bg-gray-800 border border-gray-600 text-white">
                   <DialogHeader>
-                    <DialogTitle className="px-10 pt-5 text-center">
+                    <DialogTitle className="px-6 pt-4 text-center text-lg">
                       How much do you want to spend?
                     </DialogTitle>
                   </DialogHeader>
@@ -175,7 +277,7 @@ const StockDetails = () => {
           </div>
 
           {/* Divider Line */}
-          <div className="w-full h-px bg-gray-300 my-6" />
+          <div className="w-full h-px bg-gray-600 my-6" />
 
           {/* Stock Chart Section */}
           <div className="mt-6">
@@ -186,7 +288,7 @@ const StockDetails = () => {
 
       {/* Predict Price Modal */}
       <PredictPriceModal
-        coinName={coin.coinDetails?.name}
+        coinName={coin.coinDetails?.id}
         open={predictModalOpen}
         onClose={() => setPredictModalOpen(false)}
       />

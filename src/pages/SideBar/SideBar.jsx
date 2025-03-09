@@ -78,7 +78,7 @@ const SideBar = () => {
             <Button
               onClick={() => handleMenuClick(item)}
               variant="outline"
-              className="flex items-center gap-5 py-6 w-full"
+              className="flex items-center gap-5 py-6 w-full text-black hover:bg-gray-300 hover:font-bold"
             >
               <span className="w-8">{item.icon}</span>
 
