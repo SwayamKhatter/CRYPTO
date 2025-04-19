@@ -21,8 +21,12 @@ const formSchema = z.object({
   email: z.string().email("Invalid email address").optional(),
   password: z
     .string()
-    .min(8, "Password must be at least 8 characters long")
-    .optional(),
+    .min(8, "Password must be at least 8 characters")
+    .max(16, "Password must not exceed 16 characters")
+    .regex(/[A-Z]/, "Must include at least one uppercase letter")
+    .regex(/[a-z]/, "Must include at least one lowercase letter")
+    .regex(/[0-9]/, "Must include at least one number")
+    .regex(/[^A-Za-z0-9]/, "Must include at least one special character"),
 });
 const SignupForm = () => {
   const {auth}=useSelector(store=>store)
@@ -98,6 +102,9 @@ const SignupForm = () => {
               </FormItem>
             )}
           />
+          <p className="text-sm text-gray-500 mt-2">
+            Must be 8–16 characters with uppercase, lowercase, number, and special character.
+          </p>
          {!auth.loading? <Button type="submit" className="w-full  py-5">
             Register
           </Button>:<SpinnerBackdrop show={true}/>}
